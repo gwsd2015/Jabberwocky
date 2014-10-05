@@ -1,0 +1,14 @@
+{
+    "name": "ext.autoMain",
+    "version": "0.0.1",
+    "main": "autoMain.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.autoMain"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}
