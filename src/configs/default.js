@@ -108,7 +108,7 @@ var config = [
             "ext/statusbar/statusbar",
             "ext/imgview/imgview",
             //"ext/preview/preview",
-            //"ext/extmgr/extmgr", Removed extmgr Lucas
+            "ext/extmgr/extmgr", //Removed extmgr Lucas
             //"ext/run/run", //Add location rule
             "ext/runpanel/runpanel", //Add location rule
            // "ext/debugger/debugger", //Add location rule Lucas removed
