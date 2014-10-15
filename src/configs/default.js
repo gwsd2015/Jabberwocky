@@ -144,12 +144,14 @@ var config = [
             "ext/closeconfirmation/closeconfirmation",
             "ext/codetools/codetools",
             "ext/colorpicker/colorpicker",
+	    //"ext/accessdata/accessdata",
             "ext/gitblame/gitblame",
             //"ext/githistory/githistory",
             "ext/autosave/autosave",
    //Lucas         "ext/revisions/revisions",
             "ext/language/liveinspect",
-            "ext/splitview/splitview"
+            "ext/splitview/splitview",
+	    "ext/accessdata/accessdata"
         ]
     }, {
         packagePath: "vfs-architect/local",
