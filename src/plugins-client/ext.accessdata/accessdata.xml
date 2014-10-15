@@ -1,0 +1,26 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:window
+      id        = "winExtensionTemplate"
+      title     = "Acess Data Window"
+      center    = "true"
+      modal     = "false"
+      buttons   = "createNow"
+      skin      = "bk-window"
+      kbclose   = "true"
+      class     = "relative"
+      width     = "300">
+        <a:vbox>
+            <a:hbox padding="5" edge="10">
+               Displays what a page is. 
+            </a:hbox>
+            <a:hbox pack="end" padding="5" edge="6 10 10">
+                <a:button 
+                  caption = "This is my button" 
+                  skin    = "btn-default-css3"
+                  onclick = "
+                   require('ext/accessdata/accessdata').useAlert();"
+                 />
+            </a:hbox>
+        </a:vbox>
+    </a:window>
+</a:application>

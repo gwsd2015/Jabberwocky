@@ -1,0 +1,14 @@
+{
+    "name": "ext.accessdata",
+    "version": "0.0.1",
+    "main": "accessdata.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.accessdata"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}
