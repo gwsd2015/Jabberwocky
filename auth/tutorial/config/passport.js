@@ -5,7 +5,7 @@ var LocalStrategy   = require('passport-local').Strategy;
 
 
 // load up the user model
-var User       		= require('../app/models/user');
+//var User       		= require('../app/models/user');
 
 
 var mysql = require('mysql');
@@ -29,7 +29,8 @@ module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-        done(null, user.id);
+	console.log(user);
+        done(null, user);
     });
 
     // used to deserialize the user
@@ -110,7 +111,7 @@ function(req,email,password,done){
 		}
 		if(!(rows[0].password ==password))
 			return done(null, false, req.flash('loginMessage','Oops! Wrong password.'));
-
+		console.log(rows[0]);
 		return done(null,rows[0]);
 		});
 	}));
