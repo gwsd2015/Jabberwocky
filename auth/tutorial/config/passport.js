@@ -3,10 +3,11 @@
 // load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
 
+//var query = require("../app/query");
 
 // load up the user model
 //var User       		= require('../app/models/user');
-
+var USER = require('../app/models/userSQL');
 
 var mysql = require('mysql');
 
@@ -29,7 +30,7 @@ module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-	console.log(user);
+	//console.log(user);
         done(null, user);
     });
 
@@ -102,7 +103,7 @@ passport.use('local-login', new LocalStrategy({
 	passReqToCallback : true //allows us to pass back the entire request to the callback
 },
 function(req,email,password,done){
-	console.log("SELECT * FROM `users` WHERE `email` = '"+email+"'");
+	//console.log("SELECT * FROM `users` WHERE `email` = '"+email+"'");
 	connection.query("SELECT * FROM `users` WHERE `email` = '"+email+"'",function(err,rows){
 		if(err)
 		  return done(err);
@@ -111,9 +112,22 @@ function(req,email,password,done){
 		}
 		if(!(rows[0].password ==password))
 			return done(null, false, req.flash('loginMessage','Oops! Wrong password.'));
-		console.log(rows[0]);
-		return done(null,rows[0]);
+		
+
+
+		var query1= "Second query is "+"SELECT * FROM `profile` WHERE `studentid` = "+rows[0].id;
+		//var classes = query.runQuery(query1,USER);
+		//retrieve values from the result and add it to model
+		USER.id = rows[0].id;
+		USER.password = rows[0].password;
+		USER.email = rows[0].email;
+		USER.fname = rows[0].fname;
+		//USER.classes = classes;
+		//console.log("classid = "+classes[0].classid);
+		//console.log("Classes values: "+USER.classes);
+		return done(null,USER);
 		});
+
 	}));
 };
 
