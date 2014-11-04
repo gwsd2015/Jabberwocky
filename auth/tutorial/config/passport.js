@@ -115,17 +115,42 @@ function(req,email,password,done){
 		
 
 
-		var query1= "Second query is "+"SELECT * FROM `profile` WHERE `studentid` = "+rows[0].id;
+		var query1= "SELECT * FROM `profile` WHERE `studentid` = "+rows[0].id;
+		var use = new Object();
+		use.id = rows[0].id;
+		use.password = rows[0].password;
+		use.email = rows[0].email;
+		use.fname = rows[0].fname;
+		console.log(query1);
+		connection.query(query1,function(err,rows){
+			console.log("Length of classes is: "+rows.length);
+			use.classes = rows;
+			console.log("Length of use.classes is: "+use.classes.length);
+			return done(null, use);
+		});
+		/*var query = connection.query(query1); 
+		query.on('error',function(err){
+			throw err;
+		}); 
+		query.on('fields',function(fields){    
+			console.log(fields);
+		}); 
+		
+		query.on('result',function(row){    
+			console.log(row.post_title);
+			console.log("classid is "+row.classid);
+		});*/
+		console.log("Ran last");
 		//var classes = query.runQuery(query1,USER);
 		//retrieve values from the result and add it to model
-		USER.id = rows[0].id;
+	/*	USER.id = rows[0].id;
 		USER.password = rows[0].password;
 		USER.email = rows[0].email;
-		USER.fname = rows[0].fname;
+		USER.fname = rows[0].fname;*/
 		//USER.classes = classes;
 		//console.log("classid = "+classes[0].classid);
 		//console.log("Classes values: "+USER.classes);
-		return done(null,USER);
+		//return done(null,use);
 		});
 
 	}));
