@@ -25,9 +25,20 @@
 				<h3><span class="fa fa-user"></span> Local</h3>
 
 					<p>
-						<strong>id</strong>: <%= user._id %><br>
-						<strong>email</strong>: <%= user.email %><br>
-						<strong>password</strong>: <%= user.password %>
+						<strong>Name</strong>: <%= user.fname %>
+						<strong>Id</strong>: <%= user.id %><br>
+						<strong>Email</strong>: <%= user.email %><br>
+						<strong>Password</strong>: <%= user.password %><br>
+						<% var length =0; 
+						if(!user.classes)
+						{
+							length = 0;	
+						}
+						else length = user.classes.length %>
+						<strong>Classes</strong> :<ul> <% for(var i = 0; i<length; i++){%>
+						<li><%= user.classes[i].classid %></li>
+						<% } %>
+						</ul>
 					</p>
 
 			</div>
