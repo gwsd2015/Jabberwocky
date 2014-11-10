@@ -12,7 +12,7 @@ var USER = require('../app/models/userSQL');
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-					host	 : 'localhost',
+					host	 : '54.172.45.230',
 					user	 : 'alice',
 					password : 'iamadmin'
 					});
@@ -75,6 +75,7 @@ module.exports = function(passport) {
 				return done(null,false, req.flash('signupMessage','That email is already taken.'));
 		}else{
 		//create the user
+		
 		var newUserMysql = new Object();
 			
 			newUserMysql.email = email;

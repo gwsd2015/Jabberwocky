@@ -22,13 +22,28 @@
 		<!-- LOCAL INFORMATION -->
 		<div class="col-sm-6">
 			<div class="well">
-				<h3><span class="fa fa-user"></span> Local</h3>
+				<h3><span class="fa fa-user"></span> Profile</h3>
 
 					<p>
 						<strong>Name</strong>: <%= user.fname %>
 						<strong>Id</strong>: <%= user.id %><br>
 						<strong>Email</strong>: <%= user.email %><br>
 						<strong>Password</strong>: <%= user.password %><br>
+						<br>
+						
+
+						</ul>
+					</p>
+
+			</div>
+		</div>
+
+		<!-- Class Info -->
+		<div class="col-sm-6">
+			<div class="well">
+				<h3><span class="fa fa-user"></span> Workspaces:</h3>
+
+					<p>
 						<% var length =0; 
 						if(!user.classes)
 						{
@@ -43,6 +58,7 @@
 
 			</div>
 		</div>
+
 
 	</div>
 
