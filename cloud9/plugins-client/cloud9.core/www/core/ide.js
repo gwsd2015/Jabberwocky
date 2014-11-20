@@ -162,6 +162,16 @@ define(function(require, exports, module) {
     ide.send = function(msg) {
         // if we're already connected, then do an action
         if (ide.connected === true) {
+            //console.log("Path is "+msg.path);
+           /* var temp = msg;
+            console.log("Message is ");
+            for(var propertyName in temp) {
+   // propertyName is what you want
+   //you can get the value like this: myObject[propertyName]
+                console.log(propertyName+" is "+temp[propertyName]);
+            } */ 
+            //console.log("----------------BREAK-----------------------");
+            //console.log("Before");
             ide.connection.send(msg);
         }
         else {
