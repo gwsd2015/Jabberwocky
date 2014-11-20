@@ -1,0 +1,16 @@
+{
+    "name": "cloud9.analysis",
+    "version": "0.0.1",
+
+    "main": "./worth.js",
+    "private": true,
+
+    "plugin": {
+        "consumes": [
+            "ide",
+            "process-manager",
+            "run-shell",
+            "eventbus"
+        ]
+    }
+}
