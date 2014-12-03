@@ -11,7 +11,7 @@
       width     = "300">
         <a:vbox>
             <a:hbox padding="5" edge="10">
-                Hello World!
+                Please click the compile button to test your code for completeness!
             </a:hbox>
             <a:hbox pack="end" padding="5" edge="6 10 10">
                 <a:button 

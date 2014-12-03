@@ -25,10 +25,12 @@ define(function(require, exports, module) {
 		else{
 			var file = wrkspace.split("/");
 			//console.log(file);
+			console.log("Worthy level is "+ide.level.level);
 			var data = {
 				command: "worth",
 				wksp : name+"/"+file[2],
-				id : 1
+				id : 1,
+				ld : ide.level
 			};
 			/*console.log("begin breakdown of items:");
 			for(var x in data)

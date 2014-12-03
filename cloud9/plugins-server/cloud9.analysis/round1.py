@@ -11,9 +11,10 @@ obracket = []
 cparen = []
 cbracket = []
 error_weight = 2 
-
-
-
+debug = True
+adv = 0
+weig = 50
+good = True
 #The logic in this function is wrong.
 #It will not included both mismatched values in both stacks
 # It will just return the longest value.
@@ -98,6 +99,7 @@ def parseErrorMessage(error):
 
 def checkCompile(filename,data):
 	global error_weight
+	global good
 	cmd = "javac "+filename
 	compileScore = 0
 	process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
@@ -105,12 +107,17 @@ def checkCompile(filename,data):
 	if not output and not error:
 		#print "Success: Compile was Successful."
 		data['compileP'] = data['compileP'] + 1
+		compileScore = compileScore - 1
+		good = True
+		if(debug):
+			adv = weig
 	if error:
 		#print "Failure : Compile was unsuccessful."
 		#print "Error was :",error
 		data['compileF'] = data['compileF'] + 1
 		errorVal = parseErrorMessage(error)
 		compileScore = compileScore + errorVal
+		good = False
 	return (compileScore,data)
 
 #This function takes in three arguments, returns aEPC
@@ -135,7 +142,10 @@ def calcLV(data):
 	wParen = data['pSR'] * .5
 	wBrack = data['bSR'] * .5
 	wCompile =  data['EPC'] 
-	return (wCompile- (wParen+wBrack))
+	if(not debug):
+		return (wCompile- (wParen+wBrack)) 
+	return (wCompile - wParen+wBrack) + adv
+
 
 
 data = dbq.getCurrentLDValues()
@@ -160,11 +170,19 @@ data['bSR'] = updateRates(data['bSR'],data['compileT'],score[1])
 #print "data before update EPC is ",data
 data = updateEPC(cEPC,data)
 #print "data after update EPC is ",data
-data["LV"] = calcLV(data)
+#data["LV"] = calcLV(data)
+
+if(debug):
+	if(good == True):
+		data["LV"] = data["LV"]+ -.5
+		print data["LV"]
+	if(good == False):
+		data["LV"] = data["LV"]+ .5
+		print data["LV"]
+if(debug == False):
+	print data["LV"]
+	data["LV"] = calcLV(data)
 dbq.updateLDScore(data)
-
-print data["LV"]
-
 #print "final score is ",total_score
 #paren.pop
 #paren.append("{")

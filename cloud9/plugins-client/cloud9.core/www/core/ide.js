@@ -6,12 +6,28 @@
  */
 var ide; //Global on purpose!!!!
 
+
+
+
 define(function(require, exports, module) {
     var Document = require("core/document");
     var util = require("core/util");
     var SMITH_IO = require("smith.io");
+    
 
     ide = new apf.Class().$init();
+
+    /*Jabberwocky User info */
+    ide.level =
+    {
+        score : 0,
+        level : 1 ,
+        f1 : "",
+        f2 : "",
+        f3 : "",
+        message : ""
+    }
+    /*End Jabberwocky user info */
 
     ide.createDocument = function(node, value){
         return new Document(node, value);
@@ -143,9 +159,28 @@ define(function(require, exports, module) {
                 }
             }
 
+            /* Jabberwocky*/
+            /* This is how you display a message to the user */
+            if(message.type === "level"){
+                if(ide.dispatchEvent("showerrormessage",message) !== false){
+                    util.alert(
+                        "You may have leveled",
+                        "You may have been deemed worthy:",
+                        JSON.stringify(message.message)
+                        );
+                }
+                ide.level.level = message.ld.level;
+                ide.level.score = message.ld.score;
+
+            }
+
+
+
             ide.dispatchEvent("socketMessage", {
                 message: message
             });
+
+             
         });
 
         connection.on("away", function() {
