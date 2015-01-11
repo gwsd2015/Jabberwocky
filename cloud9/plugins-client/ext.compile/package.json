@@ -1,0 +1,14 @@
+{
+    "name": "ext.compile",
+    "version": "0.0.1",
+    "main": "compile.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.compile"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

@@ -1,0 +1,32 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:window
+      id        = "winExtensionTemplate"
+      title     = "Compile Java"
+      center    = "true"
+      modal     = "false"
+      buttons   = "close"
+      skin      = "bk-window"
+      kbclose   = "true"
+      class     = "relative"
+      width     = "300">
+        <a:vbox>
+            <a:hbox padding="5" edge="10">
+                Please click the compile button to test your code for completeness!
+            </a:hbox>
+            <a:hbox pack="end" padding="5" edge="6 10 10">
+                <a:button 
+                  caption = "Close" 
+                  skin    = "btn-default-css3"
+                  onclick = "
+                   require('ext/compile/compile').closeExtensionTemplateWindow();"
+                 />
+                 <a:button
+                  caption = "Compile"
+                  skin = "btn-default-css3"
+                  onclick="
+                  require('ext/compile/compile').compileJava();"
+                  />
+            </a:hbox>
+        </a:vbox>
+    </a:window>
+</a:application>

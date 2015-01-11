@@ -90,12 +90,12 @@ var config = [
             "ext/recentfiles/recentfiles",
             "ext/gotofile/gotofile",
             "ext/newresource/newresource",
-            "ext/undo/undo",
-            "ext/clipboard/clipboard",
-            "ext/searchinfiles/searchinfiles",
+            //"ext/undo/undo",
+            //"ext/clipboard/clipboard",
+            //"ext/searchinfiles/searchinfiles",
             "ext/searchreplace/searchreplace",
             "ext/quickwatch/quickwatch",
-            "ext/gotoline/gotoline",
+            //"ext/gotoline/gotoline",
             "ext/preview/preview",
             // "ext/deploy/deploy",
             //"ext/log/log",
@@ -108,7 +108,7 @@ var config = [
             "ext/statusbar/statusbar",
             "ext/imgview/imgview",
             //"ext/preview/preview",
-            "ext/extmgr/extmgr",
+            //"ext/extmgr/extmgr",
             //"ext/run/run", //Add location rule
             "ext/runpanel/runpanel", //Add location rule
             "ext/debugger/debugger", //Add location rule
@@ -132,8 +132,8 @@ var config = [
             //"ext/testpanel/testpanel",
             //"ext/nodeunit/nodeunit",
             "ext/zen/zen",
-            "ext/codecomplete/codecomplete",
-            "ext/vim/vim",
+            //"ext/codecomplete/codecomplete",
+            //"ext/vim/vim",
             "ext/anims/anims",
             "ext/guidedtour/guidedtour",
             "ext/quickstart/quickstart",
@@ -147,9 +147,10 @@ var config = [
             "ext/gitblame/gitblame",
             //"ext/githistory/githistory",
             "ext/autosave/autosave",
-            "ext/revisions/revisions",
+            //"ext/revisions/revisions",
             "ext/language/liveinspect",
-            "ext/splitview/splitview"
+            "ext/splitview/splitview",
+            "ext/compile/compile"
         ]
     }, {
         packagePath: "vfs-architect/local",
@@ -236,4 +237,57 @@ if (useAuth) {
     });
 }
 
-module.exports = config;
+
+
+
+
+
+//function UnlockLevel(level)
+/*UnlockL = function(level)
+{
+    var level =
+    {
+        level : 1 ,
+        f1 : "",
+        f2 : "",
+        f3 : ""
+    }
+    if(level === -2)
+    {
+        config[13].clientPlugins.push("ext/codecomplete/codecomplete"); 
+        config[13].clientPlugins.push("ext/searchinfiles/searchinfiles");
+        config[13].clientPlugins.push("ext/vim/vim");
+        level.f1 = "Code Complete";
+        level.f2 = "Search in Files";
+        level.f3 = "Vim Mode";
+        level.level = 2;
+    }
+    if(level === -3)
+    {
+        config[13].clientPlugins.push("ext/clipboard/clipboard");
+        config[13].clientPlugins.push("ext/undo/undo");
+        level.f1 = "ClipBoard";
+        level.f2 = "Undo";
+        level.level = 3;
+    }
+    if(level === -4)
+    {
+        config[13].clientPlugins.push("ext/keybindings/keybindings");
+        config[13].clientPlugins.push("ext/extmgr/extmgr");
+        config[13].clientPlugins.push("ext/revisions/revisions");
+        level.f1 = "Keybindings";
+        level.f2 = "Extension Manager";
+        level.f3 = "Revisions";
+        level.level = 4;
+    }
+    if(level === -5)
+    {
+        config[13].clientPlugins.push("ext/gotoline/gotoline");
+        level.f1 = " Go to Line";
+        level.level=5;
+    }
+    return level;
+}
+
+*/
+module.exports = config;//, UnlockL;
