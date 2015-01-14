@@ -1,0 +1,14 @@
+{
+    "name": "ext.insertSwitch",
+    "version": "0.0.1",
+    "main": "insertSwitch.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.insertSwitch"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

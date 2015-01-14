@@ -1,0 +1,14 @@
+{
+    "name": "ext.insertWhile",
+    "version": "0.0.1",
+    "main": "insertWhile.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.insertWhile"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "name": "ext.insertIf",
+    "version": "0.0.1",
+    "main": "insertIf.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.insertIf"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

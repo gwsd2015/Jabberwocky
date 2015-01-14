@@ -1,0 +1,14 @@
+{
+    "name": "ext.forloop",
+    "version": "0.0.1",
+    "main": "forloop.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.forloop"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}

@@ -1,0 +1,32 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:window
+      id        = "winExtensionTemplate"
+      title     = "Auto For Loop"
+      center    = "true"
+      modal     = "false"
+      buttons   = "close"
+      skin      = "bk-window"
+      kbclose   = "true"
+      class     = "relative"
+      width     = "300">
+        <a:vbox>
+            <a:hbox padding="5" edge="10">
+                Please click the add button to add a for loop
+            </a:hbox>
+            <a:hbox pack="end" padding="5" edge="6 10 10">
+                <a:button 
+                  caption = "Close" 
+                  skin    = "btn-default-css3"
+                  onclick = "
+                   require('ext/forloop/forloop').closeExtensionTemplateWindow();"
+                 />
+                 <a:button
+                  caption = "Add"
+                  skin = "btn-default-css3"
+                  onclick="
+                  require('ext/forloop/forloop').insertfor();"
+                  />
+            </a:hbox>
+        </a:vbox>
+    </a:window>
+</a:application>

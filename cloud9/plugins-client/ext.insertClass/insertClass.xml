@@ -1,0 +1,35 @@
+<a:application xmlns:a="http://ajax.org/2005/aml">
+    <a:window
+      id        = "winExtensionTemplateClass"
+      title     = "Auto Class Generation"
+      center    = "true"
+      modal     = "false"
+      buttons   = "close"
+      skin      = "bk-window"
+      kbclose   = "true"
+      class     = "relative"
+      width     = "300">
+        <a:vbox>
+            <a:hbox padding="5" edge="10">
+                Please Type in the name of your class, then hit the add button.
+            </a:hbox>
+            <a:hbox id="test" padding="5" align="start" edge="0 0 0 126">
+                <a:codebox id="className" tabindex="1002" skin="searchbox" flex="1" initial-message="Class Name" focusselect="true"/>
+            </a:hbox>
+            <a:hbox pack="end" padding="5" edge="6 10 10">
+                <a:button 
+                  caption = "Close" 
+                  skin    = "btn-default-css3"
+                  onclick = "
+                   require('ext/insertClass/insertClass').closeExtensionTemplateWindow();"
+                 />
+                 <a:button
+                  caption = "Add"
+                  skin = "btn-default-css3"
+                  onclick="
+                  require('ext/insertClass/insertClass').insertClass();"
+                  />
+            </a:hbox>
+        </a:vbox>
+    </a:window>
+</a:application>

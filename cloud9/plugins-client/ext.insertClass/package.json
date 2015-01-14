@@ -1,0 +1,14 @@
+{
+    "name": "ext.insertClass",
+    "version": "0.0.1",
+    "main": "insertClass.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.insertClass"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}
