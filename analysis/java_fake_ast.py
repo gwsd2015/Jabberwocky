@@ -1,12 +1,18 @@
 
 # coding: utf-8
 
-# In[199]:
+# In[128]:
 
 import re
+import os
+import sys
+import subprocess
+errorString = ""
+numIfs = 0
+numFor = 0
 
 
-# In[200]:
+# In[129]:
 
 class Node:
     def __init__(self,data,parent):
@@ -21,7 +27,7 @@ class Node:
             print self.children[x]
 
 
-# In[201]:
+# In[130]:
 
 #Open us all of information about file
 f = open("HelloWorld.java","r")
@@ -31,12 +37,12 @@ for line in f:
 print program
 
 
-# In[202]:
+# In[130]:
 
 
 
 
-# In[203]:
+# In[130]:
 
 
 
@@ -44,8 +50,9 @@ print program
 # 
 #     
 
-# In[219]:
+# In[131]:
 
+##Iterative tree builder
 def makeTree(tree,program):
     tempTree= tree
     currentParent = tree
@@ -76,12 +83,12 @@ def makeTree(tree,program):
     return tempTree
 
 
-# In[220]:
+# In[132]:
 
 tree = makeTree(Node("START",None),program)
 
 
-# In[221]:
+# In[133]:
 
 for i in range(len(tree.children)):
     print tree.children[i].data
@@ -90,37 +97,112 @@ for i in range(len(tree.children[2].children)):
     print tree.children[2].children[i].data
 
 
-# In[222]:
+# In[133]:
 
 
 
 
-# In[223]:
+# In[134]:
 
+#print tree.
 def printTree(tree):
     for i in range(len(tree.children)):
         print tree.children[i].data.strip()+ "---> Parent is "+tree.children[i].parent.data
+        print " "
     for i in range(len(tree.children)):
         printTree(tree.children[i])
     return
 
 
-# In[223]:
+# In[134]:
 
 
 
 
-# In[224]:
+# In[135]:
 
 printTree(tree)
 
 
-# In[210]:
+# In[136]:
+
+def detectElements(program):
+    runCompile()
+    for i in range(len(program)):
+        #print program[i]
+        detectFor(program[i])
+        detectIf(program[i])
 
 
+# In[137]:
+
+#function to determine if there are for statements in code
+def detectFor(line):
+    global errorString
+    global numFor
+    reg = r"(for)+(\s?)+(\()+(.)+(.)+(.?)+(\))"
+    ret = re.search(reg,line)
+    if ret:
+        if ret.string in errorString:
+            print "BAD LINE"
+        else: 
+            numFor = numFor + 1
+        print ret.string
+        
 
 
-# In[210]:
+# In[138]:
+
+detectElements(program)
+
+
+# In[139]:
+
+# compile the code to get the error messages.
+def runCompile():
+    global errorString
+    cmd = "javac HelloWorld.java"
+    process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+    output, error = process.communicate()
+    if not output and not error:
+        print "No Errors"
+    if error:
+        errorString = error
+        
+        
+
+
+# In[140]:
+
+# function to determine if there are if statements in the code.
+def detectIf(line):
+    global errorString
+    global numIfs
+    reg = r"(if)+(\s?)+(\()+(((\s?)+(.)+(\s?)+(==|!=|<=|>=)+(\s?)+(.))|((\s?)+(\w)+(\s?)))+(\))"
+    ret = re.search(reg,line)
+    if ret:
+        if ret.string in errorString:
+            print "BAD LINE"
+        else:
+            numIfs = numIfs + 1
+        print ret.string
+
+
+# In[141]:
+
+runCompile()
+
+
+# In[142]:
+
+print "Total number of Ifs"
+print numIfs
+
+print "Total number of Fors"
+print numFor
+
+
+# In[142]:
 
 
 
