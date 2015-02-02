@@ -1,10 +1,15 @@
+<?php 
+    session_start();
+    $_SESSION['course_id'] = 123;
+?>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>   
-    
+<title>Class Roster</title>
+
 </head>
 <body>
 <div class="page-header" align="center">
@@ -66,7 +71,7 @@ while($column = mysql_fetch_array($res)){
     echo "<td>Level ".$studentData['level']."</td>";
     echo "<td>".$studentData['LV']."</td>";
     echo "<td>".$studentWksp['dir']."</td>";
-    echo "<td> <button type='button' class='btn btn-info'>View</button></td>";
+    echo "<td> <form action='student_view.php' method='post'><input type='hidden' value='".$column['SID']."' name='student_id'><input button type='submit' class='btn btn-info' name='username' value='View'></button></form></td>";
     echo "</tr>";
 }
 
