@@ -12,7 +12,7 @@ public class HelloWorld{
 		int z = adder(x,y);
 		System.out.println("The value of z is "+z);
         String hello = "Hello World";
-        for(int i = 0 ; i < hell.length(); i ++ )
+        for(int i = 0 ; i < hello.length(); i ++ )
         {
             System.out.println("Hello");
         }
@@ -27,6 +27,23 @@ public class HelloWorld{
             x++;
         }
         
+        while (x<1)
+        {
+        	System.out.println(2);
+        }
+
+        //while(x>1){}
+
+
+        while(x<1)
+        {
+        	x--;
+        }
+
+        do{
+        	x++;
+
+        }while(False)
         
         
         for(int i = 0; i< 5; i++)
