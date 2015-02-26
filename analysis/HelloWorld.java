@@ -35,7 +35,7 @@ public class HelloWorld{
         //while(x>1){}
 
 
-        while(x<1)
+        while(x<1 || x==2 || y <2)
         {
         	x--;
         }
