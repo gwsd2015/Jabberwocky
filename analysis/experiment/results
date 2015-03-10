@@ -1,0 +1,347 @@
+File: AddressBook.java
+Found 26 methods
+('getFirst', 1)
+('getLast', 1)
+('getPhone', 1)
+('getCompany', 1)
+('toString', 1)
+('getValue', 2)
+('getIndex', 1)
+('compareTo', 4)
+('AddressBook', 2)
+('initFirst', 1)
+('initLast', 1)
+('initPhone', 1)
+('initCompany', 1)
+('quicksort', 6)
+('partition', 1)
+('search', 24)
+('if', 13)
+('binarySearch', 5)
+('main', 1)
+Total Constructs:
+	for(exp): 9
+	if(exp): 8
+	while(exp): 2
+	do{: 0
+Average method usage: 3.57894736842
+
+File: AssassinGame.java
+Found 6 methods
+('add', 9)
+('size', 2)
+('toString', 1)
+('fire', 5)
+('if', 11)
+('main', 5)
+Total Constructs:
+	for(exp): 0
+	if(exp): 6
+	while(exp): 2
+	do{: 0
+Average method usage: 5.5
+
+File: BigPower.java
+Found 3 methods
+('main', 0)
+('power', 15)
+('power2', 8)
+Total Constructs:
+	for(exp): 0
+	if(exp): 3
+	while(exp): 0
+	do{: 0
+Average method usage: 7.66666666667
+
+File: BinaryTreeInt.java
+Found 12 methods
+('toString', 0)
+('add', 4)
+('recursiveInsert', 3)
+('size', 0)
+('contains', 1)
+('recursiveSearch', 3)
+('print', 10)
+('printRecursively', 0)
+('printTree', 3)
+Total Constructs:
+	for(exp): 0
+	if(exp): 18
+	while(exp): 1
+	do{: 0
+Average method usage: 2.66666666667
+
+File: DigitSum.java
+Found 4 methods
+('main', 0)
+('getSum', 1)
+('number', 2)
+Total Constructs:
+	for(exp): 3
+	if(exp): 1
+	while(exp): 1
+	do{: 0
+Average method usage: 1.0
+
+File: FindStrangeWords.java
+Found 11 methods
+('main', 2)
+('myTests', 1)
+('System.out.println', 9)
+('mainTest', 1)
+('findConsecVowelWords', 4)
+('if', 15)
+Total Constructs:
+	for(exp): 2
+	if(exp): 5
+	while(exp): 0
+	do{: 0
+Average method usage: 5.33333333333
+
+File: ImageTool.java
+Found 16 methods
+('paintComponent', 1)
+('showImage', 6)
+('imageToPixels', 3)
+('=', 68)
+('pixelsToImage', 4)
+('readImageFile', 4)
+('imageFileToPixels', 0)
+('toBufferedImage', 1)
+('writeToJPGFile', 3)
+('main', 1)
+Total Constructs:
+	for(exp): 13
+	if(exp): 2
+	while(exp): 0
+	do{: 0
+Average method usage: 9.1
+
+File: ImageTransformations.java
+Found 15 methods
+('main', 0)
+('applyKernel', 2)
+('if', 27)
+('applyEffect', 1)
+Total Constructs:
+	for(exp): 6
+	if(exp): 8
+	while(exp): 0
+	do{: 0
+Average method usage: 7.5
+
+File: KeyValuePair.java
+Found 2 methods
+('KeyValuePair', 1)
+('toString', 0)
+Total Constructs:
+	for(exp): 0
+	if(exp): 0
+	while(exp): 0
+	do{: 0
+Average method usage: 0.5
+
+File: ListOfLists.java
+Found 2 methods
+('main', 0)
+('makeListOfLists', 2)
+Total Constructs:
+	for(exp): 2
+	if(exp): 0
+	while(exp): 0
+	do{: 0
+Average method usage: 1.0
+
+File: OurHashMap.java
+Found 6 methods
+('OurHashMap', 1)
+('add', 2)
+('contains', 4)
+('getKeyValuePair', 1)
+('getAllKeyValuePairs', 1)
+('printBucketDistribution', 0)
+Total Constructs:
+	for(exp): 3
+	if(exp): 7
+	while(exp): 0
+	do{: 0
+Average method usage: 1.5
+
+File: OurLinkedListMap.java
+Found 5 methods
+('add', 0)
+('size', 0)
+('contains', 1)
+('getKeyValuePair', 0)
+('getAllKeyValuePairs', 0)
+Total Constructs:
+	for(exp): 0
+	if(exp): 7
+	while(exp): 3
+	do{: 0
+Average method usage: 0.2
+
+File: ParenBalancingExercise.java
+Found 4 methods
+('main', 0)
+('checkParens', 4)
+('place', 1)
+('if', 6)
+Total Constructs:
+	for(exp): 2
+	if(exp): 6
+	while(exp): 0
+	do{: 0
+Average method usage: 2.75
+
+File: QuickSelectDeter.java
+Found 12 methods
+('sortPartition', 1)
+('sort', 5)
+('getMedian', 2)
+('partition', 3)
+('partitionAround', 1)
+('Select', 8)
+('System.out.println', 6)
+('if', 5)
+('main', 2)
+Total Constructs:
+	for(exp): 4
+	if(exp): 5
+	while(exp): 0
+	do{: 0
+Average method usage: 3.66666666667
+
+File: SpellChecker.java
+Found 12 methods
+('SpellChecker', 2)
+('ActionListener', 1)
+('actionPerformed', 0)
+('handleButtonClick', 1)
+('findClosestWords', 5)
+('if', 34)
+('test', 11)
+('print', 13)
+('equalsDiffer', 2)
+('diffLength', 4)
+('main', 0)
+Total Constructs:
+	for(exp): 7
+	if(exp): 12
+	while(exp): 0
+	do{: 0
+Average method usage: 6.63636363636
+
+File: SubWordFinder.java
+Found 6 methods
+('toString', 0)
+('main', 0)
+('isDictionaryWord', 3)
+('subwords', 10)
+('findSubWords', 2)
+Total Constructs:
+	for(exp): 5
+	if(exp): 5
+	while(exp): 0
+	do{: 0
+Average method usage: 3.0
+
+File: TextTwist.java
+Found 23 methods
+('toString', 0)
+('TextTwistGUI', 2)
+('ActionListener', 7)
+('actionPerformed', 3)
+('getWords', 1)
+('handleAddButtonClick', 1)
+('writeOutput', 5)
+('handleShuffleButtonClick', 1)
+('setPermutedWordLabel', 2)
+('permute', 3)
+('handleNextButtonClick', 1)
+('isDictionaryWord', 1)
+('options', 2)
+('subwords', 14)
+('divideSubwords', 1)
+('findSubWords', 1)
+('main', 0)
+Total Constructs:
+	for(exp): 11
+	if(exp): 20
+	while(exp): 1
+	do{: 0
+Average method usage: 2.64705882353
+
+File: WordMorph.java
+Found 6 methods
+('findLinks', 3)
+('recursive', 5)
+('offByOne', 3)
+('copy', 5)
+('main', 0)
+('print', 8)
+Total Constructs:
+	for(exp): 5
+	if(exp): 5
+	while(exp): 0
+	do{: 0
+Average method usage: 4.0
+
+File: WordMorphGUI.java
+Found 7 methods
+('WordMorphGUI', 2)
+('ActionListener', 1)
+('actionPerformed', 0)
+('handleButtonClick', 1)
+('run', 0)
+('findLinks', 2)
+('main', 0)
+Total Constructs:
+	for(exp): 2
+	if(exp): 3
+	while(exp): 0
+	do{: 0
+Average method usage: 0.857142857143
+
+File: WordSearchPuzzle.java
+Found 10 methods
+('main', 0)
+('findWords', 1)
+('forwards', 2)
+('backwards', 3)
+('upwards', 5)
+('downwards', 4)
+('diagonal', 9)
+('if', 21)
+Total Constructs:
+	for(exp): 19
+	if(exp): 13
+	while(exp): 0
+	do{: 0
+Average method usage: 5.625
+
+File: WordTool.java
+Found 8 methods
+('getDictionary', 2)
+('readDictionary', 2)
+('readWords', 0)
+('scrub', 4)
+('if', 5)
+('computeRemainder', 0)
+('copy', 3)
+Total Constructs:
+	for(exp): 6
+	if(exp): 5
+	while(exp): 4
+clAverage method usage: 2.28571428571
+
+File: exercise1.java
+Found 1 methods
+('main', 0)
+Total Constructs:
+	for(exp): 0
+	if(exp): 0
+	while(exp): 0
+	do{: 0
+Average method usage: 0.0
+
