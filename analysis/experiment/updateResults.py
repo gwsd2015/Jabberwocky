@@ -45,7 +45,10 @@ def getCurrentData(sid,filename):
 	
 	row = cursor.fetchone()
 	if row is None:
-		return (0,{})
+		sid_temp = sid
+		data = dict(sid=sid,fname=filename,forloop=0,switch=0,ifstate=0,whilestate=0\
+		,doloop=0,numFunctions=0,func=0)
+		return (0,data)
 	data = dict(sid=row[1],fname=row[2],forloop=row[3],switch=row[4],ifstate=row[5],whilestate=row[6]\
 		,doloop=row[7],numFunctions=row[8],func=row[9])
 	#data = dict(id=row[0],sid=row[1],compileT=row[2],compileF=row[3]\
