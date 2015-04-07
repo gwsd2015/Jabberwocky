@@ -1,6 +1,6 @@
 <a:application xmlns:a="http://ajax.org/2005/aml">
     <a:window
-      id        = "winExtensionTemplate"
+      id        = "winExtension"
       title     = "Compile Java"
       center    = "true"
       modal     = "false"
@@ -8,7 +8,8 @@
       skin      = "bk-window"
       kbclose   = "true"
       class     = "relative"
-      width     = "300">
+      width     = "300"
+      height    = "300">
         <a:vbox>
             <a:hbox padding="5" edge="10">
                 Please click the compile button to test your code for completeness!

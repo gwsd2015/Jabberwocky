@@ -37,24 +37,24 @@ module.exports = ext.register("ext/compile/compile", {
 
     init : function(){
         var _self = this;
-        this.winExtensionTemplate = winExtensionTemplate;
+        this.winExtension = winExtension;
         
         commands.addCommand({
-            name: "sayhello",
+            name: "Compile_Java",
             hint: "I'll say something",
             msg: "Popping window!",
-            bindKey: {mac: "Shift-1", win: "Ctrl-1"},
+            bindKey: {mac: "Ctrl-1", win: "Ctrl-1"},
             isAvailable : function() {
                 return true;    
             },
             exec: function() {
-                _self.winExtensionTemplate.show()
+                _self.winExtension.show()
             }
         });
         
         this.nodes.push(
             menus.addItemByPath("Edit/Compile Java", new apf.item({
-                command : "sayhello"
+                command : "Compile_Java"
             }), 5400)
         ); 
 
@@ -62,7 +62,7 @@ module.exports = ext.register("ext/compile/compile", {
         this.nodes.push(
             menus.addItemByPath("Edit/Extension Template", new apf.item({
                 onclick : function(){
-                    _self.winExtensionTemplate.show();
+                    _self.winExtension.show();
                 }
             }), 5400)
         ); */
@@ -93,7 +93,7 @@ module.exports = ext.register("ext/compile/compile", {
     },
 
      closeExtensionTemplateWindow : function(){
-        this.winExtensionTemplate.hide();
+        this.winExtension.hide();
      },
      compileJava : function(){
         // script.js
@@ -112,7 +112,7 @@ module.exports = ext.register("ext/compile/compile", {
         script.callAlgorithm(ide.workspaceDir,page.id);
         
         //console.log("Current File is "+ide.ide.getActivePage());
-        this.winExtensionTemplate.hide();
+        this.winExtension.hide();
      }
 });
 

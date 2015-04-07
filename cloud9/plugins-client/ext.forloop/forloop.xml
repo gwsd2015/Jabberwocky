@@ -1,6 +1,6 @@
 <a:application xmlns:a="http://ajax.org/2005/aml">
     <a:window
-      id        = "winExtensionTemplate"
+      id        = "insert_for_loop"
       title     = "Auto For Loop"
       center    = "true"
       modal     = "false"
@@ -18,7 +18,7 @@
                   caption = "Close" 
                   skin    = "btn-default-css3"
                   onclick = "
-                   require('ext/forloop/forloop').closeExtensionTemplateWindow();"
+                   require('ext/forloop/forloop').closeInsertForLoopWindow();"
                  />
                  <a:button
                   caption = "Add"

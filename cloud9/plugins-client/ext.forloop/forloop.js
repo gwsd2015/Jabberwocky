@@ -33,7 +33,7 @@ module.exports = ext.register("ext/forloop/forloop", {
 
     init : function(){
         var _self = this;
-        this.winExtensionTemplate = winExtensionTemplate;
+        this.insert_for_loop = insert_for_loop;
         
         commands.addCommand({
             name: "forloop",
@@ -47,7 +47,7 @@ module.exports = ext.register("ext/forloop/forloop", {
             exec: function() {
                 //This calls the insertfor function.
                 _self.insertfor();
-                //_self.winExtensionTemplate.show()
+                //_self.insert_for_loop.show()
             }
         });
         
@@ -61,7 +61,7 @@ module.exports = ext.register("ext/forloop/forloop", {
         this.nodes.push(
             menus.addItemByPath("Edit/Extension Template", new apf.item({
                 onclick : function(){
-                    _self.winExtensionTemplate.show();
+                    _self.insert_for_loop.show();
                 }
             }), 5400)
         ); */
@@ -91,8 +91,8 @@ module.exports = ext.register("ext/forloop/forloop", {
         this.nodes = [];
     },
 
-     closeExtensionTemplateWindow : function(){
-        this.winExtensionTemplate.hide();
+     closeInsertForLoopWindow : function(){
+        this.insert_for_loop.hide();
      },
 
      insertfor : function(){
@@ -108,7 +108,7 @@ module.exports = ext.register("ext/forloop/forloop", {
             editor.insert("for(int i = 0; i<__; i++) \n\t{ \n\t}");
             
         
-        this.winExtensionTemplate.hide();
+        this.insert_for_loop.hide();
      }
 });
 
