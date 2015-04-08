@@ -1,0 +1,8 @@
+#These are docker commands
+
+Main command:
+sudo docker run -d -p 3131 --name chaufournierluc126 -v /users/chaufournierluc126:/home/alice/Jabberwocky/cloud9/wksp test4 ./debug.sh
+
+
+
+

@@ -59,18 +59,20 @@ USER alice
 # Sets path for sm installer
 RUN echo "export PATH='/lib/node_modules/sm/bin/sm':\$PATH" >> /home/alice/.bashrc
 
-#source /root/.bashrc
+#RUN source /home/alice/.bashrc
 
 RUN mkdir wksp/
-USER root
-# installs cloud9
-#RUN cd /root/Jabberwocky/cloud9/ && /lib/node_modules/sm/bin/sm install .
 #USER root
-RUN sudo sm install .
-
+# installs cloud9
+#RUN cd /home/alice/Jabberwocky/cloud9/ && /lib/node_modules/sm/bin/sm install .
+USER root
+#RUN cd /home/alice/Jabberwocky/cloud9/ && /home/alice/Jabberwocky/cloud9/node_modules/sm/bin/sm install .
+RUN /home/alice/Jabberwocky/cloud9/node_modules/sm/bin/sm install .
+#RUN sudo sm install .
+RUN make ace 
 RUN chown -R alice:alice /home/alice/Jabberwocky/cloud9/
-USER alice
-EXPOSE 3131
+#USER alice
+#EXPOSE 3131
 
 
 
