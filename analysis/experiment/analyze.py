@@ -4,9 +4,9 @@ import subprocess
  
 
 
-def processFile(fileName):
+def processFile(fileName,sid):
 	print "File: "+fileName
-	cmd = "python findMethods.py "+fileName#samples/"+fileName
+	cmd = "python findMethods.py "+fileName+" "+sid#samples/"+fileName
 		#print cmd
 	process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
 	output, error = process.communicate()
@@ -22,7 +22,9 @@ def processFile(fileName):
 try:
 	fname = sys.argv[1]
 	fname = fname.rstrip()
-	processFile(fname)
+	sid = sys.argv[2]
+	sid = sid.rstrip()
+	processFile(fname,sid)
 
 except IndexError:
 	print "Need to provide a filename argument"
