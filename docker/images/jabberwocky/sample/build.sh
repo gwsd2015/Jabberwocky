@@ -1,4 +1,4 @@
 #!/bin/bash
 
 
-sudo docker build -t jabberwockyv5 .
+sudo docker build -t test4 .
