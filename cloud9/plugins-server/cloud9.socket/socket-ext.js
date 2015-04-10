@@ -20,11 +20,12 @@ module.exports = function setup(options, imports, register) {
 
         connection.on("message", function(message) {
             //debugger;
-            /*console.log("--------------Break-----------------");
+            console.log("--------------Break-----------------");
             for( var propName in message){
                 console.log(propName+" is "+message[propName]);
             }
-            console.log("--------------Break------------------");*/
+            console.log(message.command+" <-----");
+            console.log("--------------Break------------------");
             if (message.command === "attach" && typeof message.workspaceId !== "undefined") {
 
                 getSession(message.sessionId, function(err, session) {
@@ -52,6 +53,10 @@ module.exports = function setup(options, imports, register) {
                     });
                 });
             }
+		if(message.command === "javac"){
+            console.log("Compilation was called!!!");
+            //debugger;
+        }
             //checks if the worth command was given. Calls the worthiness algorithm on it..
         if(message.command === "worth") {//&& typeof message.workspaceId !== "undefinded"){
             //console.log("It worked!!!!");
