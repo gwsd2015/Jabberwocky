@@ -53,8 +53,9 @@ module.exports = function setup(options, imports, register) {
                     });
                 });
             }
-		if(message.command === "javac"){
+		if(message.command === "javac" || message.command === "git" || message.command === "GIT"){
             console.log("Compilation was called!!!");
+            var result = worthy.updateCmdLine(message['wksp'],message['argv']);
             //debugger;
         }
             //checks if the worth command was given. Calls the worthiness algorithm on it..

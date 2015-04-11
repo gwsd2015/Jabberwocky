@@ -9,6 +9,50 @@ var PythonShell = require('python-shell');
 var name = "worth";
 
 
+    exports.updateCmdLine = function(dir,cmd_array){
+        console.log("Inside of updateCompile");
+        var cmd = cmd_array[0];
+        cmd = cmd.toLowerCase();
+        try{
+            var cmd_opt = cmd_array[1];
+            cmd_opt = cmd_opt.toLowerCase();
+        }catch(err){
+            if (cmd === "git")
+            {
+                return;
+            }
+        }
+        var pyCMD = "";
+        if (cmd === "git") {
+            switch(cmd_opt){
+                case "push": pyCMD = "gpush"; break;
+                case "pull": pyCMD = "gpull"; break;
+                case "commit": pyCMD = "gcommit"; break;
+                case "checkout": pyCMD = "gcheckout"; break;
+                case "status": pyCMD = "gstatus"; break;
+                default: return;
+            }
+        }
+        if (cmd === "javac")
+        {
+            var pyCMD = cmd;
+        }
+
+        
+        var options = {
+            mode: 'text',
+            pythonPath: '/usr/bin/python',
+            pythonOptions: ['-u'],
+            scriptPath: 'plugins-server/cloud9.analysis',
+            args: [dir,pyCMD,"1234"]
+        };
+        PythonShell.run('updateCMD.py',options,function(err,results){
+            if (err) throw err;
+            console.log("Results: %j",results);
+        });
+
+    }
+
 //This function takes in the working directory and runs the script on it.
     exports.callAlgorithm = function(directory,level,callback){
         console.log("Inside of callAlgorithm");
@@ -18,10 +62,10 @@ var name = "worth";
             pythonPath: '/usr/bin/python',
             pythonOptions: ['-u'],
             scriptPath: 'plugins-server/cloud9.analysis',
-            args: [dir]
+            args: [dir,"1234"]
         };
 
-        PythonShell.run('round1.py', options, function (err, results) {
+        PythonShell.run('findMethods.py', options, function (err, results) {
             if (err) throw err;
              
             console.log("First");

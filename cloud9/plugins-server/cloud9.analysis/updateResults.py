@@ -6,7 +6,57 @@ db = MySQLdb.connect(host="54.172.45.230",user="alice",passwd="iamadmin",db="Jab
 
 cursor = db.cursor()
 
+def setFeatures(sid,fid):
+    global db
+    global cursor
+    query = "insert into student_features(SID,FID) values("+str(sid)+","+str(fid)+")"
+    cursor.execute(query)
+    db.commit()
+    
 
+def getFeatureStatus(sid):
+    global db
+    global cursor
+    feats = []
+    all_feats = {} 
+    query = "select keyword from student_features inner join features on student_features.fid=features.fid where sid = "+str(sid)
+    cursor.execute(query)
+    db.commit()
+    for row in cursor.fetchall() :
+        #features[row[1]]=row[0]
+        feats.append(row[0])
+    query = "select fid,featureName,keyword from features"
+    cursor.execute(query)
+    db.commit()
+    for row in cursor.fetchall():
+        all_feats[row[2]] = row[0]
+    return (feats,all_feats)
+
+
+def updateCommandStatus(command,sid,value):
+    global db
+    global cursor
+    query = "update learning_data set "+command+" = "+str(value)+" where sid = "+str(sid)
+    cursor.execute(query)
+    db.commit()
+
+
+def getCommandStatus(command,sid):
+    global db
+    global cursor
+    query = "select "+command+" from learning_data where sid = "+str(sid)
+    cursor.execute(query)
+    db.commit()
+    row = cursor.fetchone()
+    if row is None:
+        return -1
+    return row[0]
+
+
+def updateCompile():
+    global db
+    global cursor
+    query = ""
 
 def makeQuery(data,sid,fname):
 	query = "update program_stats set sid="+str(sid)
