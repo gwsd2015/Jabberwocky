@@ -22,11 +22,13 @@ var theme = require("text!ext/console/themes/arthur.css");
 var inputHistory = require("ext/console/input_history");
 var anims = require("ext/anims/anims");
 var preview = require("ext/preview/preview");
-
+//var features = require("core/features");
+var features = require("ext/features/features");
+//var worth = require("ext/cloud9.analysis/worth");
 // Some constants used throughout the plugin
 var KEY_TAB = 9, KEY_CR = 13, KEY_UP = 38, KEY_ESC = 27, KEY_DOWN = 40;
 var actionCodes = [KEY_TAB, KEY_CR, KEY_UP, KEY_ESC, KEY_DOWN];
-
+var enabled = false;
 /*global txtConsolePrompt tabEditors txtConsole btnCollapseConsole
          txtConsoleInput txtOutput consoleRow  tabConsole winDbgConsole cliBox
 */
@@ -275,6 +277,8 @@ module.exports = ext.register("ext/console/console", {
                 line: line,
                 pid: this.pageIdToPidMap[pageId].pid
             };
+	    //debugger;
+	    console.log("Reached send1");
             ide.send(data);
             return;
         }
@@ -358,6 +362,8 @@ module.exports = ext.register("ext/console/console", {
                     };
 
                     tabConsole.getPage().setCaption(cmd);
+		    //debugger;
+		    console.log("Reached send 2");
                     ide.send(data);
                     this.command_id_tracer++;
                     return true;
@@ -696,29 +702,61 @@ module.exports = ext.register("ext/console/console", {
         );
 
         menus.addItemByPath("Tools/~", new apf.divider(), 30000);
+     //   features.printFeatures();
+        console.log("features.git_enabled is "+ide.features['javac']);
+        var cmd = {"Git": []}
+        if(ide.features['gstatus'] === 'True')
+        {
+            cmd.Git.push(["Status", "git status"]);
+        }
+        if(ide.features['gpush'] === 'True')
+        {
+            cmd.Git.push(["Push", "git push"]);
+        }
+        if(ide.features['gpull'] === 'True')
+        {
+            cmd.Git.push(["Pull", "git pull"]);
+        }
+        if(ide.features['gcommit'] === 'True')
+        {
+            cmd.Git.push(["Commit", "git commit -m ", null, null, true]);
+        }
+        if(ide.features['gcheckout'] === 'True')
+        {
+            cmd.Git.push( ["Checkout", "git checkout ", null, null, true]);
+        }
+        
+        if(cmd.Git.length === 0)
+        {
+            var cmd = {};
+        }
 
-        var cmd = {
-            "Git" : [
-                ["Status", "git status"],
-                ["Push", "git push"],
-                ["Pull", "git pull"],
-                ["Stash", "git stash"],
-                ["Commit", "git commit -m ", null, null, true],
-                ["Checkout", "git checkout ", null, null, true]
-            ],
-            "Hg" : [
-                ["Sum", "hg sum"],
-                ["Push", "hg push"],
-                ["Pull", "hg pull"],
-                ["Status", "hg status"],
-                ["Commit", "hg commit -m ", null, null, true],
-                ["Parents", "hg parents ", null, null, true]
-            ],
-            "Npm" : [
-                ["Install", "npm install"],
-                ["Uninstall", "npm uninstall", null, null, true]
-            ]
-        };
+       /* if (ide.features != null &&  ide.features['gstatus'] === "True"){
+            var cmd = {
+                "Git" : [
+                    ["Status", "git status"],
+                    ["Push", "git push"],
+                    ["Pull", "git pull"],
+                    ["Stash", "git stash"],
+                    ["Commit", "git commit -m ", null, null, true],
+                    ["Checkout", "git checkout ", null, null, true]
+                ],
+                "Hg" : [
+                    ["Sum", "hg sum"],
+                    ["Push", "hg push"],
+                    ["Pull", "hg pull"],
+                    ["Status", "hg status"],
+                    ["Commit", "hg commit -m ", null, null, true],
+                    ["Parents", "hg parents ", null, null, true]
+                ],
+                "Npm" : [
+                    ["Install", "npm install"],
+                    ["Uninstall", "npm uninstall", null, null, true]
+                ]
+            };
+        }else{
+            var cmd = {};
+        }*/
 
         var idx = 40000;
         Object.keys(cmd).forEach(function(c) {
@@ -942,6 +980,8 @@ module.exports = ext.register("ext/console/console", {
             }
         };
 
+	//debugger;
+	console.log("Reached send 3");
         ide.send(data);
     },
 

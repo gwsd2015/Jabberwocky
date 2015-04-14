@@ -1,15 +1,42 @@
 "use strict";
 
 //var util = require("util");
-
 //var Plugin = require("../cloud9.core/plugin");
 //var c9util = require("../cloud9.core/util");
 var config = require("../../configs/default");
+//var features = require("../../plugins-client/cloud9.core/www/core/features");
+var features = require("../ext.features/features");
 var PythonShell = require('python-shell');
 var name = "worth";
+    
 
+   // exports.getCurrentStatus = function(sid){
+   function getCurrentStatus(sid,callback){
+     var options = {
+            mode: 'text',
+            pythonPath: '/usr/bin/python',
+            pythonOptions: ['-u'],
+            scriptPath: 'plugins-server/cloud9.analysis',
+            args: [sid]
+        };
+        PythonShell.run('featureStatus.py',options,function(err,results){
+            if (err) throw err;
+            console.log("Update Status function");
+            console.log("Results: %j",results);
+            for(var i=0, len=results.length; i < len; i+=2){
+               features.feat[results[i]]= results[i+1]; 
+            }
 
-    exports.updateCmdLine = function(dir,cmd_array){
+            console.log("GLOBAL VARIABLE: "+features.feat['gpush']);
+        });
+        callback(features.feat);
+       
+
+    }
+
+    exports.getCurrentStatus = getCurrentStatus;
+
+    exports.updateCmdLine = function(dir,cmd_array,callback){
         console.log("Inside of updateCompile");
         var cmd = cmd_array[0];
         cmd = cmd.toLowerCase();
@@ -49,7 +76,17 @@ var name = "worth";
         PythonShell.run('updateCMD.py',options,function(err,results){
             if (err) throw err;
             console.log("Results: %j",results);
+            console.log("status of git_enabled before: "+features.git_enabled);
+            if ( results[1].indexOf("gpush") != -1  && results[1].indexOf("unlock")!= -1)
+            {
+                console.log("Unlocked gpush");
+                features.git_enabled = true;
+            }
+            console.log("status of git_enabled after: "+features.git_enabled);
+            
         });
+        getCurrentStatus(1234,callback);
+        //callback(features.feat);
 
     }
 
@@ -70,10 +107,11 @@ var name = "worth";
              
             console.log("First");
             // results is an array consisting of messages collected during execution
-            console.log('results: %j', results);
-            //UpdateLevel(results[0],callback);
+            console.log('results2: %j', results);
+                        //UpdateLevel(results[0],callback);
             console.log("Worth callAlgorithm level is "+level);
-            UnlockL(results[0],level,callback);
+            callback(level);
+            //UnlockL(results[0],level,callback);
             //callback(results);
             //return plug.UnlockL(results[0]);
             //return results[0]
@@ -91,7 +129,8 @@ var name = "worth";
 
 
 
- var UnlockL = function(score,level,callback)
+
+/* var UnlockL = function(score,level,callback)
 {
     console.log("Entered the UNlock Function");
     score = parseFloat(score);
@@ -100,6 +139,7 @@ var name = "worth";
     /*var debug = -1 - score;
     score = score - debug;
     level.score = score;*/
+/*
     level.score = score;
     console.log("level.score is "+level.score+" score is "+score+" level is "+level.level);
     if(level.score <= -2 && level.level < 2 )
@@ -147,4 +187,4 @@ var name = "worth";
         level.message = "Not yet. Your score is too low. Your current score is "+score;
     }
     callback(level);
-}
+}*/

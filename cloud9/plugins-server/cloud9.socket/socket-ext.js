@@ -53,9 +53,34 @@ module.exports = function setup(options, imports, register) {
                     });
                 });
             }
+
+        if(message.command === "getFeatures"){
+            console.log("Setting up user space");
+            var result = worthy.getCurrentStatus(message.sid,function(feats){
+                var data = {
+                    command: "setFeatures",
+                    "type": "setFeatures",
+                    features: feats
+                };
+                connection.send(data);
+            });
+        }
+
 		if(message.command === "javac" || message.command === "git" || message.command === "GIT"){
             console.log("Compilation was called!!!");
-            var result = worthy.updateCmdLine(message['wksp'],message['argv']);
+            var result = worthy.updateCmdLine(message['wksp'],message['argv'],function(feats){
+                var data = {
+                    "type" : "updateFeatures",
+                    command : "updateFeatures",
+                    "message" : "Updating features",
+                    features : feats
+                };
+                connection.send(data); 
+        
+            }
+            
+            
+            );
             //debugger;
         }
             //checks if the worth command was given. Calls the worthiness algorithm on it..

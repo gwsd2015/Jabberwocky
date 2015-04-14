@@ -13,8 +13,7 @@ define(function(require, exports, module) {
     var Document = require("core/document");
     var util = require("core/util");
     var SMITH_IO = require("smith.io");
-    
-
+    var features = require("ext/features/features");
     ide = new apf.Class().$init();
 
     /*Jabberwocky User info */
@@ -27,6 +26,8 @@ define(function(require, exports, module) {
         f3 : "",
         message : ""
     }
+
+    ide.features = {};
     /*End Jabberwocky user info */
 
     ide.createDocument = function(node, value){
@@ -146,6 +147,11 @@ define(function(require, exports, module) {
                 ide.connecting = false;
                 ide.connected = true;
                 ide.dispatchEvent("socketConnect");
+                var data = {
+                    command: "getFeatures",
+                    sid: 1234
+                };
+                ide.send(data);
             }
 
             if (message.type === "error") {
@@ -157,6 +163,19 @@ define(function(require, exports, module) {
                         JSON.stringify(message.message)
                     );
                 }
+            }
+            
+            if(message.type === "setFeatures"){
+                for(i in message.features)
+                {
+                    ide.features[i] = message.features[i];
+                }
+                console.log("--------Values of FEATURE-------");
+              for(i in ide.features) {
+                  console.log (i, ide.features[i])
+              }
+               console.log("------VALUES OF FEATURE-------");
+
             }
 
             /* Jabberwocky*/
@@ -174,6 +193,23 @@ define(function(require, exports, module) {
 
             }
 
+            if(message.type === "updateFeatures"){
+                //console.log("Before!");
+                //features.printFeatures();
+                console.log("Features updated!! with "+message.features);
+                for(i in message.features)
+                {
+                    ide.features[i] = message.features[i];
+                }
+                //features.feat = message.features;
+                //features.feat_status();
+                //features.printFeatures();
+               console.log("--------Values of FEATURE-------");
+              for(i in ide.features) {
+                  console.log (i, ide.features[i])
+              }
+               console.log("------VALUES OF FEATURE-------");
+            }
 
 
             ide.dispatchEvent("socketMessage", {

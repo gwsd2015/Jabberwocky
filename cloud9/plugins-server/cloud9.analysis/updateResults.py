@@ -6,6 +6,21 @@ db = MySQLdb.connect(host="54.172.45.230",user="alice",passwd="iamadmin",db="Jab
 
 cursor = db.cursor()
 
+
+def getAllFeatures():
+    global db
+    global cursor
+    feats = {}
+    query = "select keyword from features"
+    cursor.execute(query)
+    db.commit()
+    for row in cursor.fetchall():
+        feats[row] = False
+    return feats
+
+
+
+
 def setFeatures(sid,fid):
     global db
     global cursor

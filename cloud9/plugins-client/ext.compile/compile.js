@@ -36,6 +36,9 @@ module.exports = ext.register("ext/compile/compile", {
     nodes : [],
 
     init : function(){
+        if(ide.features['javac'] === "True")
+        {
+
         var _self = this;
         this.winExtension = winExtension;
         
@@ -51,13 +54,12 @@ module.exports = ext.register("ext/compile/compile", {
                 _self.winExtension.show()
             }
         });
-        
-        this.nodes.push(
+            this.nodes.push(
             menus.addItemByPath("Edit/Compile Java", new apf.item({
                 command : "Compile_Java"
             }), 5400)
         ); 
-
+        } 
        /* Just a plain menu...
         this.nodes.push(
             menus.addItemByPath("Edit/Extension Template", new apf.item({
