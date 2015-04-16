@@ -24,7 +24,8 @@ module.exports = {
     hook : function(language, worker){
         var _self = this;
         _self.worker = worker;
-
+        if(ide.hide_feature === false)
+        {
         commands.addCommand({
             name : "jumptodef",
             bindKey: {mac: "F3", win: "F3"},
@@ -78,6 +79,7 @@ module.exports = {
                 mnuCtxEditorJumpToDef.disable();
             }
         });
+        }
     },
 
     $getFirstColumn: function(row) {

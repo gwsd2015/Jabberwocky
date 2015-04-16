@@ -220,6 +220,7 @@ def SinglePrint():
 	data["numFunctions"] += method_count
 	data["func"] += computeAverageMethodUsage()  
 	print data
+	print "data type is "+str(data_type)
 	if data_type == 0:
 		updateDB.insertData(data)
 	elif data_type == 1:

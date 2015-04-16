@@ -54,6 +54,7 @@ module.exports = ext.register("ext/searchreplace/searchreplace", apf.extend({
         var _self = this;
 
         this.markupInsertionPoint = searchRow;
+        if(ide.hide_feature == false){
 
         commands.addCommand({
             name: "replace",
@@ -111,7 +112,7 @@ module.exports = ext.register("ext/searchreplace/searchreplace", apf.extend({
         commands.addCommand({
             name: "find",
             hint: "open the quicksearch dialog to quickly search for a phrase",
-            bindKey: {mac: "Command-F", win: "Ctrl-F"},
+           // bindKey: {mac: "Command-F", win: "Ctrl-F"},
             isAvailable : function(editor){
                 return editor && editor.path == "ext/code/code";
             },
@@ -148,6 +149,8 @@ module.exports = ext.register("ext/searchreplace/searchreplace", apf.extend({
         ide.addEventListener("init.ext/searchinfiles/searchinfiles", function(e){
             searchinfiles = e.ext;
         });
+        }//hide feature endif
+
     },
 
     init : function(amlNode){

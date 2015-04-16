@@ -55,7 +55,7 @@ module.exports = ext.register("ext/compile/compile", {
             }
         });
             this.nodes.push(
-            menus.addItemByPath("Edit/Compile Java", new apf.item({
+            menus.addItemByPath("Tools/Compile Java", new apf.item({
                 command : "Compile_Java"
             }), 5400)
         ); 

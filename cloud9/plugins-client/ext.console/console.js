@@ -311,6 +311,9 @@ module.exports = ext.register("ext/console/console", {
             this.command_id_tracer++;
         }
         else {
+            var temp_fileName = ide.getActivePage();
+            temp_fileName = temp_fileName.id;
+            var fileName = temp_fileName.replace("/workspace","");
             var data = {
                 command: cmd,
                 argv: argv,
@@ -320,7 +323,8 @@ module.exports = ext.register("ext/console/console", {
                 tracer_id: this.command_id_tracer,
                 extra : {
                     command_id : this.command_id_tracer
-                }
+                },
+                fname : fileName 
             };
 
             if (cmd.trim() === "npm")
@@ -363,7 +367,7 @@ module.exports = ext.register("ext/console/console", {
 
                     tabConsole.getPage().setCaption(cmd);
 		    //debugger;
-		    console.log("Reached send 2");
+		    console.log("Reached send 2 "+cmd);
                     ide.send(data);
                     this.command_id_tracer++;
                     return true;
@@ -683,7 +687,8 @@ module.exports = ext.register("ext/console/console", {
                     _self.hideInput();
             }
         });
-
+        if(ide.hide_feature === false)
+        {
         this.nodes.push(
             menus.addItemByPath("Goto/Switch to Command Line", new apf.item({
                 command : "switchconsole"
@@ -700,7 +705,7 @@ module.exports = ext.register("ext/console/console", {
                 checked : "[{require('ext/settings/settings').model}::auto/console/@showinput]"
             }), 800)
         );
-
+        }
         menus.addItemByPath("Tools/~", new apf.divider(), 30000);
      //   features.printFeatures();
         console.log("features.git_enabled is "+ide.features['javac']);

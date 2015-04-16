@@ -34,7 +34,8 @@ module.exports = ext.register("ext/forloop/forloop", {
     init : function(){
         var _self = this;
         this.insert_for_loop = insert_for_loop;
-        
+        if (ide.features['afor'] == "True")
+        {
         commands.addCommand({
             name: "forloop",
             hint: "I'll say something",
@@ -52,7 +53,7 @@ module.exports = ext.register("ext/forloop/forloop", {
         });
         
         this.nodes.push(
-            menus.addItemByPath("Edit/Insert For Loop", new apf.item({
+            menus.addItemByPath("Insert/Insert For Loop", new apf.item({
                 command : "forloop"
             }), 5400)
         ); 
@@ -65,6 +66,7 @@ module.exports = ext.register("ext/forloop/forloop", {
                 }
             }), 5400)
         ); */
+        }
     },
 
     hook : function(){

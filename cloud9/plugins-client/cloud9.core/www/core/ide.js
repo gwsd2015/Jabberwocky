@@ -28,6 +28,8 @@ define(function(require, exports, module) {
     }
 
     ide.features = {};
+    ide.hide_feature = true;
+    //ide.hide_feature = false;
     /*End Jabberwocky user info */
 
     ide.createDocument = function(node, value){

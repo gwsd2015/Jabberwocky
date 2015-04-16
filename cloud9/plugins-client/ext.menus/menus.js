@@ -38,14 +38,19 @@ module.exports = ext.register("ext/menus/menus", {
 
 //            this.setRootMenu("Workspace", 10),
             this.setRootMenu("File", 100),
-            this.setRootMenu("Edit", 200),
-            this.setRootMenu("Selection", 300),
-            this.setRootMenu("Find", 400),
-            this.setRootMenu("View", 500),
-            this.setRootMenu("Goto", 600),
-            this.setRootMenu("Tools", 700)
+            //this.setRootMenu("Edit", 200),
+            this.setRootMenu("Insert",300),
+            this.setRootMenu("Tools", 400));
+            if(ide.hide_feature == false)
+            {
+        this.nodes.push(
+            this.setRootMenu("Edit",200),
+            this.setRootMenu("Selection", 500),   
+            this.setRootMenu("Find", 600),
+            this.setRootMenu("View", 700),
+            this.setRootMenu("Goto", 800)
         );
-
+            }//end if hide feature
         var timer;
         this.menubar.insertBefore(new apf.button({
             "class" : "c9-mbar-minimize",

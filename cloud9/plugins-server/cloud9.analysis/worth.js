@@ -63,6 +63,19 @@ var name = "worth";
         if (cmd === "javac")
         {
             var pyCMD = cmd;
+            var opts = {
+                mode: 'text',
+                pythonPath: '/usr/bin/python',
+                pythonOptions: ['-u'],
+                scriptPath: 'plugins-server/cloud9.analysis',
+                args: [dir]
+            };
+
+            PythonShell.run('runJava.py',opts,function(err,results){
+                if (err) throw err;
+                console.log("Javac results: %j",results);
+            });
+
         }
 
         
@@ -110,7 +123,8 @@ var name = "worth";
             console.log('results2: %j', results);
                         //UpdateLevel(results[0],callback);
             console.log("Worth callAlgorithm level is "+level);
-            callback(level);
+            getCurrentStatus(1234,callback);
+            //callback(level);
             //UnlockL(results[0],level,callback);
             //callback(results);
             //return plug.UnlockL(results[0]);

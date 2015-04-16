@@ -34,7 +34,10 @@ module.exports = ext.register("ext/insertIf/insertIf", {
     init : function(){
         var _self = this;
         this.winExtensionTemplate = winExtensionTemplate;
-        
+        //console.log("Inside of IFSTATEAUTO: "+ide.features['aif']);
+        if(ide.features['aif'] === "True")
+        {
+       
         commands.addCommand({
             name: "insertIf",
             hint: "I'll say something",
@@ -52,10 +55,12 @@ module.exports = ext.register("ext/insertIf/insertIf", {
         });
         
         this.nodes.push(
-            menus.addItemByPath("Edit/Insert If Statement", new apf.item({
+            //menus.addItemByPath("Edit/Insert If Statement", new apf.item({
+            menus.addItemByPath("Insert/Insert If Statement", new apf.item({
                 command : "insertIf"
             }), 5400)
-        ); 
+        );
+        if (ide.features['aelse'] === "True"){
         commands.addCommand({
             name: "insertIfElse",
             hint: "I'll say something",
@@ -73,10 +78,10 @@ module.exports = ext.register("ext/insertIf/insertIf", {
         });
         
         this.nodes.push(
-            menus.addItemByPath("Edit/Insert If Else Statement", new apf.item({
+            menus.addItemByPath("Insert/Insert If Else Statement", new apf.item({
                 command : "insertIfElse"
             }), 5400)
-        ); 
+        ); }
        /* Just a plain menu...
         this.nodes.push(
             menus.addItemByPath("Edit/Extension Template", new apf.item({
@@ -85,6 +90,7 @@ module.exports = ext.register("ext/insertIf/insertIf", {
                 }
             }), 5400)
         ); */
+    } 
     },
 
     hook : function(){

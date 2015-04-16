@@ -67,8 +67,9 @@ module.exports = function setup(options, imports, register) {
         }
 
 		if(message.command === "javac" || message.command === "git" || message.command === "GIT"){
+            console.log("JAVAC WORKSPACE "+message['fname']);
             console.log("Compilation was called!!!");
-            var result = worthy.updateCmdLine(message['wksp'],message['argv'],function(feats){
+            var result = worthy.updateCmdLine(message['cwd']+message['fname'],message['argv'],function(feats){
                 var data = {
                     "type" : "updateFeatures",
                     command : "updateFeatures",
@@ -81,6 +82,21 @@ module.exports = function setup(options, imports, register) {
             
             
             );
+
+        if(message.command === "javac")
+        {
+            var result = worthy.callAlgorithm(message['cwd']+message['fname'],message['argv'],function(feats){
+            
+                var data ={
+                    "type": "updateFeatures",
+                    command : "updateFeatures",
+                    "message" : "Updating Features",
+                    features: feats
+                };
+                connection.send(data);
+            
+            });
+        }
             //debugger;
         }
             //checks if the worth command was given. Calls the worthiness algorithm on it..

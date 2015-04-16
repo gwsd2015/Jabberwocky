@@ -150,11 +150,11 @@ var config = [
             //"ext/revisions/revisions",
             "ext/language/liveinspect",
 //            "ext/splitview/splitview",
-//	    "ext/forloop/forloop",
-//	    "ext/insertClass/insertClass",
- //           "ext/insertIf/insertIf",
- //           "ext/insertSwitch/insertSwitch",
-  //          "ext/insertWhile/insertWhile",
+         //   "ext/forloop/forloop",
+          //  "ext/insertClass/insertClass",
+           "ext/insertIf/insertIf",
+          //  "ext/insertSwitch/insertSwitch",
+          //  "ext/insertWhile/insertWhile",
             "ext/compile/compile"
         ]
     }, {

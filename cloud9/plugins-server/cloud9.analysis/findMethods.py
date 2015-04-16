@@ -10,8 +10,9 @@ method_table = []
 method_table_count = []
 data = {}
 #thresholds = dict(forloop=30,switch=30,ifstate=30,whilestate=30,doloop=30,numFunctions=75,func=100,git=30,java=30) 
-thresholds = dict(forloop=5,switch=5,ifstate=5,whilestate=5,doloop=5,numFunctions=5,func=5,git=5,java=5) 
-keys = ["forloop","switch","func","numFunctions","whilestate","doloop","ifstate"]
+thresholds = dict(forloop=5,switch=5,ifstate=5,whilestate=5,doloop=5,numFunctions=5,functionUsage=5,git=5,java=5,ifelse=6) 
+keys = ["forloop","switch","functionUsage","numFunctions","whilestate","doloop","ifstate"]
+fids = dict(forloop=4,switch=15,ifstate=5,functionUsage=6,whilestate=7,doloop=16,numFunctions=1)
 #Open file
 #file = "/Users/lucasch/Desktop/cs1112/lucasch-out11/WordMorph.java"
 #file = "/home/lucasch/Documents/Code_drop/DigitSum.java"
@@ -213,6 +214,21 @@ def updateData(current_data,old_data,sid,fname):
 			print data_key+": old_data is equal to current_data"
 			print str(current_data[data_key])+"="+str(old_data[data_key])
 	updateDB.updateData(db_data,sid,fname)
+	overall_total = updateDB.getOverallTotals(sid)
+        checkThresholds(overall_total,sid)
+
+def checkThresholds(current_data,sid):
+        global thresholds
+        global keys
+        global fids
+        if current_data['ifstate'] > thresholds['ifelse']:
+            updateDB.setFeatures(sid,8)
+        for key in keys:
+            print key+" "+str(current_data[key])+">"+str(thresholds[key])
+            if current_data[key] > thresholds[key]:
+               print "Threshold Passed. NOW UPDATING FEATURES: "+key+" "+str(fids[key])
+               updateDB.setFeatures(sid,fids[key]) 
+
 
 #This function performs actuall analysis
 def SinglePrint():
@@ -244,7 +260,7 @@ def SinglePrint():
 	data["whilestate"] = res[3]
 	data["doloop"] = res[4]
 	data["numFunctions"] = method_count
-	data["func"] = computeAverageMethodUsage()  
+	data["functionUsage"] = computeAverageMethodUsage()  
 	#print data
 	#print "data type is "+str(data_type)
 	data_totals = updateDB.getOverallTotals(data["sid"])
@@ -255,7 +271,7 @@ def SinglePrint():
 		(ex,data_program_totals) = updateDB.getCurrentData(data["sid"],data["fname"])
 		updateData(data,data_program_totals,data["sid"],data["fname"])
 		#updateDB.makeQuery(db_data,data["sid"],data["fname"])
-		
+	        	
 		#updateDB.updateData(db_data)
 
 

@@ -48,7 +48,7 @@ var SupportedModes = modes.all;
 var fileExtensions = modes.extensions;
 var ModesCaption = modes.captions;
 var contentTypes = modes.types;
-
+//var hide_feature = true;
 
 module.exports = ext.register("ext/code/code", {
     name    : "Code Editor",
@@ -435,12 +435,14 @@ module.exports = ext.register("ext/code/code", {
     registerMenuItems: function() {
         var _self = this;
         var c = 20000;
+        if(ide.hide_feature === false)
+        {
         this.menus.push(
             menus.addItemByPath("Tools/~", new apf.divider(), c += 100),
             addEditorMenu("Tools/Toggle Macro Recording", "togglerecording"), //@todo this needs some more work
             addEditorMenu("Tools/Play Macro", "replaymacro")//@todo this needs some more work
         );
-
+    
         c = 600;
         this.menus.push(
             menus.addItemByPath("Edit/~", new apf.divider(), c += 100),
@@ -450,7 +452,7 @@ module.exports = ext.register("ext/code/code", {
             menus.addItemByPath("Edit/Code Folding/", null, c += 100),
             menus.addItemByPath("Edit/Convert Case/", null, c += 100)
         );
-
+        
         function addEditorMenu(path, commandName) {
             return menus.addItemByPath(path, new apf.item({
                 command : commandName
@@ -726,6 +728,7 @@ module.exports = ext.register("ext/code/code", {
             // WY U NO WORK??
             menus.menus["Goto"][method]();
         });
+    } //if statement hide_feature
     },
 
     init: function(amlPage) {

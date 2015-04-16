@@ -27,10 +27,13 @@ define(function(require, exports, module) {
 			//console.log(file);
 			console.log("Worthy level is "+ide.level.level);
 			var data = {
-				command: "worth",
+				command: "javac",
 				wksp : name+"/"+file[2],
+                cwd : name+"/",
+                fname: file[2],
 				id : 1,
-				ld : ide.level
+				ld : ide.level,
+                argv : ["javac",name+"/"+file[2]]
 			};
 			/*console.log("begin breakdown of items:");
 			for(var x in data)

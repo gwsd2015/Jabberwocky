@@ -34,7 +34,7 @@ module.exports = ext.register("ext/insertSwitch/insertSwitch", {
     init : function(){
         var _self = this;
         this.winExtensionTemplate = winExtensionTemplate;
-        
+       if (ide.features["aswitch"] == "True"){ 
         commands.addCommand({
             name: "insertSwitch",
             hint: "I'll say something",
@@ -52,7 +52,7 @@ module.exports = ext.register("ext/insertSwitch/insertSwitch", {
         });
         
         this.nodes.push(
-            menus.addItemByPath("Edit/Insert Switch Statement", new apf.item({
+            menus.addItemByPath("Insert/Insert Switch Statement", new apf.item({
                 command : "insertSwitch"
             }), 5400)
         ); 
@@ -65,6 +65,7 @@ module.exports = ext.register("ext/insertSwitch/insertSwitch", {
                 }
             }), 5400)
         ); */
+       }
     },
 
     hook : function(){

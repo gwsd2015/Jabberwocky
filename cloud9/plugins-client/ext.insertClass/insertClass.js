@@ -52,7 +52,7 @@ module.exports = ext.register("ext/insertClass/insertClass", {
         });
         
         this.nodes.push(
-            menus.addItemByPath("Edit/Insert Class", new apf.item({
+            menus.addItemByPath("Insert/Insert Class", new apf.item({
                 command : "insertClass"
             }), 5400)
         ); 

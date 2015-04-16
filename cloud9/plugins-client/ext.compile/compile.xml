@@ -9,7 +9,7 @@
       kbclose   = "true"
       class     = "relative"
       width     = "300"
-      height    = "300">
+     >
         <a:vbox>
             <a:hbox padding="5" edge="10">
                 Please click the compile button to test your code for completeness!

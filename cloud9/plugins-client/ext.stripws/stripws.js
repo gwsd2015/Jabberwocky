@@ -52,7 +52,7 @@ module.exports = ext.register("ext/stripws/stripws", {
 
     hook: function () {
         var self = this;
-
+        if (ide.hide_feature === false){
         commands.addCommand({
             name: "stripws",
             hint: "strip whitespace at the end of each line",
@@ -87,6 +87,7 @@ module.exports = ext.register("ext/stripws/stripws", {
         });
 
         settings.addSettings("General", markupSettings);
+        }
     },
 
     stripws: function() {

@@ -34,7 +34,7 @@ module.exports = ext.register("ext/insertWhile/insertWhile", {
     init : function(){
         var _self = this;
         this.winExtensionTemplate = winExtensionTemplate;
-        
+        if (ide.features['awhile'] === "True"){
         commands.addCommand({
             name: "insertWhile",
             hint: "I'll say something",
@@ -52,7 +52,7 @@ module.exports = ext.register("ext/insertWhile/insertWhile", {
         });
         
         this.nodes.push(
-            menus.addItemByPath("Edit/Insert While Statement", new apf.item({
+            menus.addItemByPath("Insert/Insert While Statement", new apf.item({
                 command : "insertWhile"
             }), 5400)
         ); 
@@ -65,6 +65,7 @@ module.exports = ext.register("ext/insertWhile/insertWhile", {
                 }
             }), 5400)
         ); */
+        }    
     },
 
     hook : function(){
