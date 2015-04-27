@@ -7,6 +7,10 @@
     $studentName = $_SESSION['studentName'];
     $studentEmail = $_SESSION['studentEmail'];
     $SID = $_SESSION['SID'];
+    if($_POST['submit'] == 'View')
+    {
+        header("Location: http://localhost:".$_POST['portnum']);
+    }
 ?>
 <html>
 <head>
@@ -41,8 +45,8 @@
         <th>Course Title</th>
         <th>Instructor</th>
         <th>Workspace</th>
-        <th>Status</th>
-        <th>Action</th>
+    <!--    <th>Status</th>
+        <th>Action</th> --!>
         <th>Enter</th>
 
     </tr>
@@ -60,7 +64,7 @@ $dbc = mysql_connect($dbServer,$dbUser,$dbPass)
 //Select the actual database
 mysql_select_db($dbName,$dbc);
 
-$query = "select * from (select profile.ID, profile.SID, profile.dir,profile.dockinst,classes.classid,classes.classname,classes.instructor from profile Inner join classes on profile.CID = classes.classid) as A where A.SID=$SID";
+$query = "select * from (select profile.ID, profile.SID,profile.port ,profile.dir,profile.dockinst,classes.classid,classes.classname,classes.instructor from profile Inner join classes on profile.CID = classes.classid) as A where A.SID=$SID";
 $res = mysql_query($query) or
     die('Error querying database. Query is '.$query);
 
@@ -70,9 +74,9 @@ while($column = mysql_fetch_array($res)){
     echo "<td>".$column['classname']."</td>";
     echo "<td>".$column['instructor']."</td>";
     echo "<td>".$column['dir']."</td>";
-    echo "<td></td>";
-    echo "<td></td>";
-    echo "<td> <form action='/".$column['port']."' method='post'><input type='hidden' value='".$column['SID']."' name='student_id'><input button type='submit' class='btn btn-info' name='username'  value='View'></button></form></td>";
+   // echo "<td></td>";
+   // echo "<td></td>";
+    echo "<td> <form action='' method='post'><input type='hidden' value='".$column['port']."' name='portnum'><input type='hidden' value='".$column['SID']."' name='student_id'><input button type='submit' class='btn btn-info' name='submit'  value='View'></button></form></td>";
     echo "</tr>";
 }
 
