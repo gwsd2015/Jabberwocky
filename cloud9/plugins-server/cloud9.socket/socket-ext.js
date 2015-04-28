@@ -74,6 +74,7 @@ module.exports = function setup(options, imports, register) {
                     "type" : "updateFeatures",
                     command : "updateFeatures",
                     "message" : "Updating features",
+                    id: 1,
                     features : feats
                 };
                 connection.send(data); 
@@ -85,12 +86,14 @@ module.exports = function setup(options, imports, register) {
 
         if(message.command === "javac")
         {
+
             var result = worthy.callAlgorithm(message['cwd']+message['fname'],message['argv'],function(feats){
             
                 var data ={
                     "type": "updateFeatures",
                     command : "updateFeatures",
                     "message" : "Updating Features",
+                    id : 2,
                     features: feats
                 };
                 connection.send(data);

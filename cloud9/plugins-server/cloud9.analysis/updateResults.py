@@ -106,7 +106,7 @@ def insertData(data):
 	cmd ="insert into program_stats(sid,fname,forloop,switch,ifstate,whilestate,doloop,numFunctions,functionUsage)"\
 	"values("+str(data["sid"])+",'"+data["fname"]+"',"\
 	+str(data["forloop"])+","+str(data["switch"])+","+str(data["ifstate"])+","+str(data["whilestate"])\
-	+","+str(data["doloop"])+","+str(data["numFunctions"])+","+str(data["func"])+")"
+	+","+str(data["doloop"])+","+str(data["numFunctions"])+","+str(data["functionUsage"])+")"
 	print cmd
 	cursor.execute(cmd)
 	db.commit()

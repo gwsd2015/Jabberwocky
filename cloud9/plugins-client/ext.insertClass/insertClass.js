@@ -46,8 +46,8 @@ module.exports = ext.register("ext/insertClass/insertClass", {
             },
             exec: function() {
                 //This calls the insertfor function.
-                //_self.insertClass();
-                _self.winExtensionTemplate.show()
+                _self.insertClass();
+              //  _self.winExtensionTemplate.show()
             }
         });
         

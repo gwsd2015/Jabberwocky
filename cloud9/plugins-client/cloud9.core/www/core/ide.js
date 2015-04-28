@@ -15,7 +15,7 @@ define(function(require, exports, module) {
     var SMITH_IO = require("smith.io");
     var features = require("ext/features/features");
     ide = new apf.Class().$init();
-
+    var unlockMessage = {javac:"The java compilation feature has been unlocked. Please See Tools/Compile menu.",gpush:"The Git Push feature has been unlocked. Please see Tools/Git/Git Push menu",aif:"The auto if feature has been unlocked. Please See Insert/Insert If Steatement menu",aelse:""};
     /*Jabberwocky User info */
     ide.level =
     {
@@ -166,7 +166,6 @@ define(function(require, exports, module) {
                     );
                 }
             }
-            
             if(message.type === "setFeatures"){
                 for(i in message.features)
                 {
@@ -182,16 +181,29 @@ define(function(require, exports, module) {
 
             /* Jabberwocky*/
             /* This is how you display a message to the user */
-            if(message.type === "level"){
-                if(ide.dispatchEvent("showerrormessage",message) !== false){
-                    util.alert(
-                        "You may have leveled",
-                        "You may have been deemed worthy:",
+            if(message.type === "updateFeatures" && message.id == 1){
+               var msg = " ";
+                //var msg = "";
+                var counter= 0;
+                for(i in message.features)
+                {
+                    console.log("Comparing: "+i+" "+message.features[i]+" with "+ide.features[i]);
+                    if(message.features[i] !== ide.features[i])
+                    {
+                        counter++;
+                        msg +=unlockMessage[i]+" ";
+                    }
+                }
+                if(ide.dispatchEvent("showerrormessage",message) !== false && counter>0){
+                    util.alert("New Feature",
+                        "You have unlocked a new feature",
+                        msg,
                         JSON.stringify(message.message)
                         );
                 }
-                ide.level.level = message.ld.level;
-                ide.level.score = message.ld.score;
+                //counter =0;
+               // ide.level.level = message.ld.level;
+                //ide.level.score = message.ld.score;
 
             }
 
