@@ -29,7 +29,7 @@ def setFeatures(sid,fid):
     db.commit()
     row = cursor.fetchone()
     if row is None:
-        query = "insert into student_features(SID,FID) values("+str(sid)+","+str(fid)+")"
+        query = "insert into student_features(SID,FID,CID) values("+str(sid)+","+str(fid)+",123)"
         cursor.execute(query)
         db.commit()
     
