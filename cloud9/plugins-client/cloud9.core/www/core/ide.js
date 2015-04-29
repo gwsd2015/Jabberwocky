@@ -15,7 +15,7 @@ define(function(require, exports, module) {
     var SMITH_IO = require("smith.io");
     var features = require("ext/features/features");
     ide = new apf.Class().$init();
-    var unlockMessage = {javac:"The java compilation feature has been unlocked. Please See Tools/Compile menu.",gpush:"The Git Push feature has been unlocked. Please see Tools/Git/Git Push menu",aif:"The auto if feature has been unlocked. Please See Insert/Insert If Steatement menu",aelse:""};
+    var unlockMessage = {javac:"The java compilation feature has been unlocked. Please See Tools/Compile menu.",gpush:"The Git Push feature has been unlocked. Please see Tools/Git/Git Push menu",aif:"The auto if feature has been unlocked. Please See Insert/Insert If Steatement menu",aelse:"Unlocked auto else",afor:"Unlocked auto for",awhile:"Unlocked auto while",gpull:"Unlocked git pull",gcommit:"Unlocked git commit",gcheckout:"Unlocked git checkout",gstatus:"Unlocked git status",aswitch:"Unlocked auto switch"};
     /*Jabberwocky User info */
     ide.level =
     {
